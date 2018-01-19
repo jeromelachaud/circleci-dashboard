@@ -1,1 +1,1 @@
-Check out http://smashing.github.io/smashing for more information.
+Check out https://github.com/mtchavez/dashing-circleci for more information.
