@@ -37,7 +37,7 @@ def translate_status_to_class(status)
 end
 
 def build_data(project, auth_token)
-  api_url = 'https://circleci.com/api/v1/project/%s/%s/tree/%s?circle-token=%s'
+  api_url = 'https://circleci.com/api/v1.1/project/github/%s/%s/tree/%s?circle-token=%s'
   api_url = api_url % [project[:user], project[:repo], project[:branch], auth_token]
   api_response =  HTTParty.get(api_url, :headers => { "Accept" => "application/json" } )
   api_json = JSON.parse(api_response.body)
@@ -54,9 +54,7 @@ def build_data(project, auth_token)
     time: "#{calculate_time(latest_build['stop_time'])}",
     state: "#{latest_build['status'].capitalize}",
     widget_class: "#{translate_status_to_class(latest_build['status'])}",
-    committer_name: latest_build['committer_name'],
-    commit_body: "\"#{latest_build['body']}\"",
-    avatar_url: "http://www.gravatar.com/avatar/#{email_hash}"
+    commit_body: "\"#{latest_build['subject']}\"",
   }
   return data
 end
