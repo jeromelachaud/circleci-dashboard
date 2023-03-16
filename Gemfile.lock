@@ -38,7 +38,7 @@ GEM
       ruby2_keywords (~> 0.0.1)
     naught (1.1.0)
     public_suffix (5.0.1)
-    rack (2.0.9.1)
+    rack (2.0.9.3)
     rack-protection (2.0.8.1)
       rack
     ruby2_keywords (0.0.5)
